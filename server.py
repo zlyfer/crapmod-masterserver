@@ -172,8 +172,8 @@ class server:
 		except EndOfBufError:
 			return False, "end of buf unexpectedly reached"
 		
-		debug.msg(server.DBGTAG_READINFO, "%s:%d: numclients=%d, attrs=%d, version=%d, gamemode=%d, remaining=%d, maxclients=%d, mastermode=%d, map=\"%s\", desc=\"%s\""
-			% (self.host, self.port, numclients_, attrs_, version_, gamemode_, remaining_, maxclients_, mastermode_, map_, desc_))
+		debug.msg(server.DBGTAG_READINFO, "%s:%d: id=%s-%d, numclients=%d, attrs=%d, version=%d, gamemode=%d, remaining=%d, maxclients=%d, mastermode=%d, map=\"%s\", desc=\"%s\""
+			% (self.host, self.port, self.host, self.port, numclients_, attrs_, version_, gamemode_, remaining_, maxclients_, mastermode_, map_, desc_))
 			
 		self.numclients = numclients_
 		self.version = version_
