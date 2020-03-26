@@ -1,4 +1,3 @@
-gamemod
-=======
+# Gamemod
 
-an extended masterserver for cube2 sauerbraten
+An extended masterserver for Cube 2 Sauerbraten.

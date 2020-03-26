@@ -16,13 +16,13 @@
 #    along with gamemod.  If not, see <http://www.gnu.org/licenses/>.
 
 LISTEN_ADDR = "0.0.0.0"
-LISTEN_PORT = 28787
+LISTEN_PORT = 28789
 
-MASTER_ADDR = "sauerbraten.org" # the masterserver to fetch servers from
+MASTER_ADDR = "master.tomatenquark.org" # the masterserver to fetch servers from
 MASTER_PORT = 28787
 MASTER_FETCH_INTERVAL = 15*60 # interval to fetch servers from another masterserver, in seconds
 
-OWN_ADDRESS = "example.com" # my own address (e.g. master.crapmod.net)
+OWN_ADDRESS = "zlyfer.net" # my own address (e.g. master.crapmod.net)
 
 LOG_PRINT = True
 LOG_FILE = "gamemod.log"
