@@ -24,6 +24,9 @@ import tools
 
 import time
 
+latest_check = int(time.time())
+known_servers = {};
+
 class server:
 	DBGTAG = "server"
 	DBGTAG_READ = DBGTAG+"/read"
@@ -172,6 +175,16 @@ class server:
 		except EndOfBufError:
 			return False, "end of buf unexpectedly reached"
 		
+		if int(time.time()) - latest_check > 60:
+			for serv in known_servers.keys():
+				if int(time.time()) - known_servers[serv] > 60:
+					del known_servers[serv]
+					print("Server removed: ID: %s" % serv)
+		server_id = "%s:%s" % (self.host, self.port)
+		if (server_id not in known_servers.keys()):
+			print("Server added: IP: %s, Port: %d, Description: \"%s\", Map: \"%s\", ID: %s, Clients: %d, Version: %d, Attrs: %d, Gamemode: %d, Remaining: %d, Max. Clients: %d, Mastermode: %d\n" % (self.host, self.port, desc_.replace("\r\n", "").replace("\n", "").decode('utf-8', 'ignore'), map_, server_id, numclients_, version_, attrs_, gamemode_, remaining_, maxclients_, mastermode_)) # TODO: Translate numbers to actual words.
+		known_servers[server_id] = int(time.time())
+
 		debug.msg(server.DBGTAG_READINFO, "%s:%d: id=%s-%d, numclients=%d, attrs=%d, version=%d, gamemode=%d, remaining=%d, maxclients=%d, mastermode=%d, map=\"%s\", desc=\"%s\""
 			% (self.host, self.port, self.host, self.port, numclients_, attrs_, version_, gamemode_, remaining_, maxclients_, mastermode_, map_, desc_))
 			
